@@ -1,0 +1,33 @@
+{
+  "name": "horoscope-generator",
+  "version": "0.0.1",
+  "description": "Horoscope generator app",
+  "main": "./lib/app.js",
+  "private": true,
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha",
+    "start": "node ./lib/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ournet/horoscope-generator.git"
+  },
+  "keywords": [
+    "horoscope",
+    "generator",
+    "ournet"
+  ],
+  "author": "Dumitru Cantea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ournet/horoscope-generator/issues"
+  },
+  "homepage": "https://github.com/Ournet/horoscope-generator#readme",
+  "dependencies": {
+    "bluebird": "^3.4.7",
+    "dotenv": "^4.0.0",
+    "moment": "^2.17.1",
+    "ournet.data.horoscope": "^0.1.0",
+    "ournet.logger": "^0.1.0"
+  }
+}
