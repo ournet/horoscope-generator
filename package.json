@@ -27,7 +27,7 @@
     "bluebird": "^3.4.7",
     "dotenv": "^4.0.0",
     "moment": "^2.17.1",
-    "ournet.data.horoscope": "^0.1.3",
+    "ournet.data.horoscope": "^0.1.5",
     "ournet.logger": "^0.1.0"
   }
 }
