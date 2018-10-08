@@ -2,4 +2,5 @@
 
 #update repository
 git pull
-npm install
+yarn
+yarn tsc

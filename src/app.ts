@@ -63,8 +63,6 @@ async function start() {
                     period,
                 };
 
-                console.log(options);
-
                 await generator.generate(options);
 
                 date.add('' + 1 + interval.name);
