@@ -1,6 +1,6 @@
 {
   "name": "horoscope-generator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Horoscope generator app",
   "main": "./lib/app.js",
   "private": true,
