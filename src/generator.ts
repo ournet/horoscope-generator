@@ -1,6 +1,6 @@
 
 import { HoroscopePeriod, HoroscopeSign, HoroscopesHelper, ReportRepository, PhraseRepository, Phrase, Report } from '@ournet/horoscopes-domain';
-import { logger } from './logger';
+import logger from './logger';
 import { getRandomIntInclusive } from '@ournet/domain';
 
 export type GenerateOptions = {

@@ -2,7 +2,7 @@ require('dotenv').load();
 
 import { PhraseRepositoryBuilder, ReportRepositoryBuilder } from '@ournet/horoscopes-data';
 import { createDb, closeConnection } from './data';
-import { logger } from './logger';
+import logger from './logger';
 import { Dictionary } from '@ournet/domain';
 import { HoroscopePeriod } from '@ournet/horoscopes-domain';
 import * as moment from 'moment-timezone';
