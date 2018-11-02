@@ -65,7 +65,7 @@ async function start() {
 
                 await generator.generate(options);
 
-                date.add('' + 1 + interval.name);
+                date.add(1, interval.name as moment.DurationInputArg2);
             }
         }
     }
