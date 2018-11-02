@@ -24,7 +24,7 @@ const INTERVALS: Dictionary<{
     },
     W: {
         format: 'YYYYWW',
-        name: 'days',
+        name: 'week',
         options: { minPhrases: 2, maxPhrases: 5, maxLength: 1200, minLength: 500 },
         feature: 1
     }
