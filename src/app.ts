@@ -1,7 +1,5 @@
 require('dotenv').load();
 
-import { PhraseRepositoryBuilder, ReportRepositoryBuilder } from '@ournet/horoscopes-data';
-import { createDb, closeConnection } from './data';
 import logger from './logger';
 import { Dictionary } from '@ournet/domain';
 import { HoroscopePeriod } from '@ournet/horoscopes-domain';
@@ -32,20 +30,9 @@ const INTERVALS: Dictionary<{
 
 logger.warn('START', LANGUAGES);
 
-const CONNECTION_STRING = process.env.CONNECTION_STRING || '';
-
-if (!CONNECTION_STRING) {
-    throw new Error(`CONNECTION_STRING is required!`);
-}
-
 async function start() {
-    const db = await createDb(CONNECTION_STRING);
-    const phraseRep = PhraseRepositoryBuilder.build(db);
-    const reportRep = ReportRepositoryBuilder.build(db);
-    await phraseRep.createStorage();
-    await reportRep.createStorage();
 
-    const generator = new ReportGenerator(phraseRep, reportRep);
+    const generator = new ReportGenerator();
 
     for (const lang of LANGUAGES) {
         for (const period of Object.keys(INTERVALS) as HoroscopePeriod[]) {
@@ -57,10 +44,8 @@ async function start() {
             }
             for (const _i of days) {
                 const options: GenerateOptions = {
-                    ...interval.options,
                     lang,
-                    datePeriod: period + date.format(interval.format),
-                    period,
+                    period: period + date.format(interval.format),
                 };
 
                 await generator.generate(options);
@@ -73,5 +58,4 @@ async function start() {
 
 start()
     .then(() => console.log('DONE!'))
-    .catch(e => console.error(e))
-    .then(() => closeConnection());
+    .catch(e => console.error(e));

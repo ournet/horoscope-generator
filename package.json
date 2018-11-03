@@ -36,9 +36,6 @@
   },
   "homepage": "https://github.com/Ournet/horoscope-generator#readme",
   "dependencies": {
-    "@ournet/domain": "^0.3.3",
-    "@ournet/horoscopes-data": "^0.1.0",
-    "@ournet/horoscopes-domain": "^0.1.0",
     "moment-timezone": "^0.5.23",
     "mongodb": "^3.1.8",
     "ournet.logger": "^0.1.0"

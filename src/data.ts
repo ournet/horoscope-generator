@@ -1,15 +1,19 @@
+import { GraphQLQueryExecutor, OurnetQueryApi, OurnetMutationApi } from '@ournet/api-client';
 
-import { MongoClient } from 'mongodb';
-let client: MongoClient
+const executor = new GraphQLQueryExecutor(process.env.OURNET_API_HOST || 'http://ournetapi.com/graphql');
 
-export async function createDb(mongoConnectionString: string) {
-    if (client) {
-        throw new Error(`Client already exists!`);
-    }
-    client = await MongoClient.connect(mongoConnectionString);
-    return client.db();
+export function createQueryApiClient<QT>(): OurnetQueryApi<QT> {
+    return new OurnetQueryApi<QT>(executor)
 }
 
-export function closeConnection() {
-    return client.close();
+export function createMutationApiClient<QT>(): OurnetMutationApi<QT> {
+    return new OurnetMutationApi<QT>(executor);
+}
+
+export async function executeApiClient<APIT>(client: OurnetQueryApi<APIT>) {
+    const apiResult = await client.execute();
+    if (apiResult.errors) {
+        throw new Error(apiResult.errors[0].message);
+    }
+    return apiResult.data;
 }
