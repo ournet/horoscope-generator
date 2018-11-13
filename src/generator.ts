@@ -18,12 +18,16 @@ export class ReportGenerator {
 
         api.horoscopesGenerateReports('reports', { fields: HoroscopeGenerateReportsParamsStringFields }, { params: options });
 
-        const data = await executeApiClient(api);
+        try {
+            const data = await executeApiClient(api);
 
-        if (data.reports) {
-            logger.info(`Generated reports ${data.reports.length}`);
-        } else {
-            logger.warn(`Not generated report: `, options);
+            if (data.reports) {
+                logger.info(`Generated reports ${data.reports.length}`);
+            } else {
+                logger.warn(`Not generated report: `, options);
+            }
+        } catch (e) {
+            logger.error(e);
         }
     }
 }
