@@ -6,7 +6,7 @@ import { HoroscopePeriod } from '@ournet/horoscopes-domain';
 import * as moment from 'moment-timezone';
 import { GenerateOptions, ReportGenerator } from './generator';
 
-const LANGUAGES = (process.env.LANGUAGES || process.env.LANGS || 'ro ru bg').split(/[,; ]+/g);
+const LANGUAGES = (process.env.LANGUAGES || process.env.LANGS || '').split(/[,; ]+/g);
 const START_TIME = Date.now();
 const INTERVALS: Dictionary<{
     format: string,
@@ -17,7 +17,7 @@ const INTERVALS: Dictionary<{
     D: {
         format: 'YYYYMMDD',
         name: 'days',
-        options: { minPhrases: 2, maxPhrases: 2, maxLength: 600, minLength: 250 },
+        options: { minPhrases: 2, maxPhrases: 2, maxLength: 500, minLength: 250 },
         feature: 1
     },
     W: {
